@@ -9,7 +9,6 @@ class CircularInt{
     public:
     CircularInt(const int& ,const int&);
     CircularInt(int);
-    //~CircularInt();
     int GetHour() const;
     void setHour(int);
     int GetMin() const;
@@ -19,6 +18,8 @@ class CircularInt{
     CircularInt& operator-= (const CircularInt&);
     CircularInt& operator++ ();
     CircularInt operator++ (int);
+    CircularInt& operator-- ();
+    CircularInt operator-- (int);
     friend const CircularInt operator+ (const CircularInt& ,const CircularInt&);
     const CircularInt operator-();
     const CircularInt& operator*=(const CircularInt&);
@@ -27,6 +28,13 @@ class CircularInt{
     friend const CircularInt operator- (const CircularInt&,const CircularInt&);
     friend const CircularInt operator*(const CircularInt&, const CircularInt&);
     friend ostream& operator<< (ostream& out, CircularInt);
+    bool operator== (CircularInt const&);
+    bool operator!= (CircularInt const&);
+    bool operator> (CircularInt const&);
+    bool operator< (CircularInt const&);
+    bool operator>= (CircularInt const&);
+    bool operator<= (CircularInt const&);
+    bool operator! ();
 };
 
 inline ostream&  operator<< (ostream& out, CircularInt c){
