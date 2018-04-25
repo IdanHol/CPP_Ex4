@@ -9,11 +9,6 @@ CircularInt::CircularInt(const int& min,const int& max){
 CircularInt::CircularInt(int hour){
     this->hour=hour;
 }
-// CircularInt::~CircularInt(){
-//     delete &min;
-//     delete &max;
-//     delete &hour;
-// }
 int CircularInt::GetHour() const{
     return hour;
 }
@@ -57,6 +52,18 @@ CircularInt CircularInt:: operator++(int){
     operator++();
     return temp;
 }
+CircularInt& CircularInt:: operator-- (){
+    hour=hour-1;
+    if(hour<min){
+        hour=max;
+    }
+    return *this;
+}
+CircularInt CircularInt:: operator--(int){
+    CircularInt temp(*this);
+    operator--();
+    return temp;
+}
 const CircularInt CircularInt:: operator-(){
     CircularInt temp(*this);
     temp.hour=-hour;
@@ -87,4 +94,24 @@ const CircularInt& CircularInt:: operator/= (const CircularInt& a){
     }
     return *this;
 }
-
+bool CircularInt:: operator==(CircularInt const& other){
+    return this->hour==other.hour;
+}
+bool CircularInt:: operator!=(CircularInt const& other){
+    return this->hour!=other.hour;
+}
+bool CircularInt:: operator>(CircularInt const& other){
+    return this->hour>other.hour;
+}
+bool CircularInt:: operator<(CircularInt const& other){
+    return this->hour<other.hour;
+}
+bool CircularInt:: operator>=(CircularInt const& other){
+    return this->hour>=other.hour;
+}
+bool CircularInt:: operator<=(CircularInt const& other){
+    return this->hour<=other.hour;
+}
+bool CircularInt:: operator!(){
+    return !this->hour;
+}
